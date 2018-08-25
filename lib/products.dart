@@ -20,7 +20,7 @@ class Products extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Flexible(
-                  child:Text(
+                    child: Text(
                   products[index]['title'],
                   style: TextStyle(
                     fontSize: 30.0,
@@ -37,7 +37,7 @@ class Products extends StatelessWidget {
                       '\$' + products[index]['price'].toString(),
                       style: TextStyle(color: Colors.white),
                     ))
-                ],
+              ],
             ),
           ),
           DecoratedBox(
@@ -45,13 +45,19 @@ class Products extends StatelessWidget {
                   border: Border.all(color: Colors.grey, width: 1.0),
                   borderRadius: BorderRadius.circular(5.0)),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.5),
-                child:Text("Union Square, San Francisco"))),
+                  padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.5),
+                  child: Text("Union Square, San Francisco"))),
           ButtonBar(
             alignment: MainAxisAlignment.center,
             children: <Widget>[
-              FlatButton(
-                  child: Text('Details'),
+              IconButton(
+                  icon: Icon(Icons.info),
+                  color: Theme.of(context).accentColor,
+                  onPressed: () => Navigator.pushNamed<bool>(
+                      context, '/product/' + index.toString())),
+              IconButton(
+                  icon: Icon(Icons.favorite_border),
+                  color: Colors.red,
                   onPressed: () => Navigator.pushNamed<bool>(
                       context, '/product/' + index.toString()))
             ],
